@@ -10,12 +10,20 @@ import static org.hamcrest.CoreMatchers.is;
 public class TemperatureConverterResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void convertCelsiusToFahrenheitTest() {
         given()
-          .when().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(is("Hello RESTEasy Reactive"));
+                .when().get("/convert/celsius/100")
+                .then()
+                .statusCode(200)
+                .body(is("212"));
     }
 
+    @Test
+    public void convertFahrenheitToCelsiusTest() {
+        given()
+                .when().get("/convert/fahrenheit/100")
+                .then()
+                .statusCode(200)
+                .body(is("37.78"));
+    }
 }
