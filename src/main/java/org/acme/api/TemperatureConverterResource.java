@@ -1,16 +1,21 @@
-package org.acme;
+package org.acme.api;
 
 import io.smallrye.mutiny.Uni;
+import org.acme.model.Temperature;
 import org.acme.service.TemperatureConverterService;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * A resource class to convert temperature from Celsius to Fahrenheit and
+ * vice-versa.
+ *
+ * @author Owen Charles
+ * @version 1.1
+ */
 @Path("/convert")
 public class TemperatureConverterResource {
 
@@ -20,10 +25,18 @@ public class TemperatureConverterResource {
     @Inject
     TemperatureConverterService temperatureConverterService;
 
+    /**
+     * Resource method that converts {@param degrees} from Celsius to
+     * Fahrenheit.
+     *
+     * @param degrees - The temperature in Celsius.
+     * @return The equivalent {@link Temperature} in Fahrenheit.
+     */
     @Path("/celsius/{degrees}")
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> celsiusToFahrenheit(
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni<Temperature> celsiusToFahrenheit(
             @PathParam(value = "degrees") final String degrees) {
 
         LOGGER.infof("Degrees in Celsius: %s\u00B0C", degrees);
@@ -34,10 +47,18 @@ public class TemperatureConverterResource {
                         temperatureConverterService.celsiusToFahrenheit(item));
     }
 
+    /**
+     * Resource method that converts {@param degrees} from Fahrenheit to
+     * Celsius.
+     *
+     * @param degrees - The temperature in Fahrenheit.
+     * @return The equivalent {@link Temperature} in Celsius.
+     */
     @Path("/fahrenheit/{degrees}")
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> fahrenheitToCelsius(
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni<Temperature> fahrenheitToCelsius(
             @PathParam(value = "degrees") final String degrees) {
 
         LOGGER.infof("Degrees in Fahrenheit: %s\u00B0F", degrees);

@@ -1,10 +1,20 @@
 package org.acme.service;
 
+import org.acme.model.Temperature;
+import org.acme.model.TemperatureScale;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+/**
+ * A service bean that converts temperature between Celsius and Fahrenheit and
+ * vive-versa.
+ *
+ * @author Owen Charles
+ * @version 1.1
+ */
 @ApplicationScoped
 public class TemperatureConverterService {
 
@@ -15,21 +25,39 @@ public class TemperatureConverterService {
         df.setRoundingMode(RoundingMode.HALF_UP);
     }
 
-    public String celsiusToFahrenheit(final String celsiusTemp) {
+    /**
+     * Returns the {@param celsiusTemp} as Fahrenheit via a
+     * {@link Temperature} instance.
+     *
+     * @param celsiusTemp - The temperature in Celsius that will be converted to
+     *                    Fahrenheit.
+     *
+     * @return The equivalent {@link Temperature} in Fahrenheit.
+     */
+    public Temperature celsiusToFahrenheit(final String celsiusTemp) {
 
         final double celsiusTempDouble =
                 Double.parseDouble(celsiusTemp);
 
-        // Convert celsius to fahrenheit.
-        return df.format((celsiusTempDouble * 1.8) + 32.0);
+        return new Temperature(df.format((celsiusTempDouble * 1.8) + 32.0),
+                TemperatureScale.FAHRENHEIT);
 
     }
 
-    public String fahrenheitToCelsius(final String fahrenheitTemp) {
+    /**
+     * Returns the {@param fahrenheitTemp} as Celsius via a
+     * {@link Temperature} instance.
+     *
+     * @param fahrenheitTemp - The temperature in Fahrenheit that will be
+     *                       converted to Celsius.
+     *
+     * @return The equivalent {@link Temperature} in Celsius.
+     */
+    public Temperature fahrenheitToCelsius(final String fahrenheitTemp) {
 
         final double fahrenheitTempDouble = Double.parseDouble(fahrenheitTemp);
 
-        // Convert fahrenheit to celsius.
-        return df.format((fahrenheitTempDouble - 32) * (5 / 9.0));
+        return new Temperature(df.format((fahrenheitTempDouble - 32) * (5 / 9.0)),
+                TemperatureScale.CELSIUS);
     }
 }
