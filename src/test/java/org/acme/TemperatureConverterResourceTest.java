@@ -25,7 +25,7 @@ public class TemperatureConverterResourceTest {
                 .when().get("/convert/celsius/100")
                 .then()
                 .statusCode(200)
-                .body("value", is("212"),
+                .body("degrees", is("212"),
                         "temperatureScale", is("FAHRENHEIT"));
     }
 
@@ -36,7 +36,7 @@ public class TemperatureConverterResourceTest {
                 .when().get("/convert/fahrenheit/100")
                 .then()
                 .statusCode(200)
-                .body("value", is("37.78"),
+                .body("degrees", is("37.78"),
                         "temperatureScale", is("CELSIUS"));
     }
 }

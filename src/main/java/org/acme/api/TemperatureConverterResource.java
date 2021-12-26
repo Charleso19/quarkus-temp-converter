@@ -29,7 +29,7 @@ public class TemperatureConverterResource {
      * Resource method that converts {@param degrees} from Celsius to
      * Fahrenheit.
      *
-     * @param degrees - The temperature in Celsius.
+     * @param degrees The temperature in Celsius.
      * @return The equivalent {@link Temperature} in Fahrenheit.
      */
     @Path("/celsius/{degrees}")
@@ -51,7 +51,7 @@ public class TemperatureConverterResource {
      * Resource method that converts {@param degrees} from Fahrenheit to
      * Celsius.
      *
-     * @param degrees - The temperature in Fahrenheit.
+     * @param degrees The temperature in Fahrenheit.
      * @return The equivalent {@link Temperature} in Celsius.
      */
     @Path("/fahrenheit/{degrees}")

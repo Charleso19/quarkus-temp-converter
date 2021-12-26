@@ -29,7 +29,7 @@ public class TemperatureConverterService {
      * Returns the {@param celsiusTemp} as Fahrenheit via a
      * {@link Temperature} instance.
      *
-     * @param celsiusTemp - The temperature in Celsius that will be converted to
+     * @param celsiusTemp The temperature in Celsius that will be converted to
      *                    Fahrenheit.
      *
      * @return The equivalent {@link Temperature} in Fahrenheit.
@@ -48,7 +48,7 @@ public class TemperatureConverterService {
      * Returns the {@param fahrenheitTemp} as Celsius via a
      * {@link Temperature} instance.
      *
-     * @param fahrenheitTemp - The temperature in Fahrenheit that will be
+     * @param fahrenheitTemp The temperature in Fahrenheit that will be
      *                       converted to Celsius.
      *
      * @return The equivalent {@link Temperature} in Celsius.

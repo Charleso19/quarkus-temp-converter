@@ -19,8 +19,8 @@ public class Temperature {
     /**
      * Standard constructor for the initialisation of Temperature.
      *
-     * @param degrees - The temperature in degrees.
-     * @param temperatureScale - The {@link TemperatureScale}, such as Celsius
+     * @param degrees The temperature in degrees.
+     * @param temperatureScale The {@link TemperatureScale}, such as Celsius
      *                         or Fahrenheit.
      */
     public Temperature(final String degrees, TemperatureScale temperatureScale) {
@@ -40,7 +40,7 @@ public class Temperature {
     /**
      * Builder setter method.
      *
-     * @param degrees - The degrees of temperature.
+     * @param degrees The degrees of temperature.
      * @return this with the degrees set.
      */
     public Temperature setDegrees(final String degrees) {
@@ -61,7 +61,7 @@ public class Temperature {
     /**
      * Builder setter method.
      *
-     * @param temperatureScale - The {@link TemperatureScale} of the
+     * @param temperatureScale The {@link TemperatureScale} of the
      *                           {@link Temperature}.
      *
      * @return this with the {@link TemperatureScale} set.
@@ -69,5 +69,18 @@ public class Temperature {
     public Temperature setTemperatureScale(final TemperatureScale temperatureScale) {
         this.temperatureScale = temperatureScale;
         return this;
+    }
+
+    /**
+     * Standard toString method.
+     *
+     * @return Temperature instance in JSON-style format.
+     */
+    @Override
+    public String toString() {
+        return "Temperature{" +
+                "degrees='" + degrees + '\'' +
+                ", temperatureScale=" + temperatureScale +
+                '}';
     }
 }
