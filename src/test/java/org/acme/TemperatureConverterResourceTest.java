@@ -22,7 +22,7 @@ public class TemperatureConverterResourceTest {
                  * endpoint.
                  */
                 .header("Content-Type", MediaType.TEXT_PLAIN)
-                .when().get("/convert/celsius/100")
+                .when().get("/api/convert/celsius/100")
                 .then()
                 .statusCode(200)
                 .body("degrees", is("212"),
@@ -33,7 +33,7 @@ public class TemperatureConverterResourceTest {
     public void convertFahrenheitToCelsiusTest() {
         given()
                 .header("Content-Type", MediaType.TEXT_PLAIN)
-                .when().get("/convert/fahrenheit/100")
+                .when().get("/api/convert/fahrenheit/100")
                 .then()
                 .statusCode(200)
                 .body("degrees", is("37.78"),
